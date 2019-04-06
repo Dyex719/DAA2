@@ -12,6 +12,7 @@
 #include <math.h>
 #include<algorithm>
 #include<vector>
+#define INF numeric_limits<double>::infinity()
 using namespace std;
 Point p0;
 
@@ -71,32 +72,45 @@ vector<Point> Util::sortByX(vector<Point> points)
     return points;
 }
 
-double Util::leastSquareError(vector<Point> points,int i,int j)
+void Util::leastSquareError(vector<Point> points,vector<double> sum_xx,vector<double> sum_xy,vector<double> sum_y,vector<double> sum_x,vector<vector<double>> &error)
 {
-  int n = points.size();
+    int size = points.size();
+    double a[size+1][size+1];
+    double b[size+1][size+1];
 
-  double num11 = 0;
-  double num12 = 0;
-  double num13 = 0;
-  double den11 = 0;
+    for(int j = 0;j<size;j++ )
+    {
+        for(int i=0;i<=j;i++)
+        {
+          int interval = j - i + 1;
+          double x = sum_x[j] - sum_x[i-1];
+          double y = sum_y[j] - sum_y[i-1];
+          double xy = sum_xy[j] - sum_xy[i-1];
+          double xx = sum_xx[j] - sum_xx[i-1];
+          
+          double num = interval * xy - x * y;
+          double den = interval * xx - x * x;
 
-  for(int k =i;k<j;k++)
-  {
-    num11 += points[k].getX()*points[k].getY();
-    num12 += points[k].getX();
-    num13 += points[k].getY();
-    den11 += pow(points[k].getX(),2);
-  }
+          if(num==0) a[i][j] = 0; 
+          else
+          {
+            if (den==0) den = INF;
+            else  a[i][j] = num/double(den);
+          }
 
-  int a = (n*num11 - num12*num13) / (n*den11 - (pow(num12,2)));
-  int b = (num13 - a*num12) / (n);
+          b[i][j] = (y - a[i][j] * x) / double(interval);
+          // cout << a[i][j] << b[i][j] <<endl;
 
-  double error = 0;
-  for(int k =i;k<j;k++)
-  {
-    error += pow((points[k].getY() - (a*points[k].getX()) - b),2);
-  }
+          for (int k = i;k <= j; k++)	{
+              double tmp = points[k].getY() - a[i][j] * points[k].getX() - b[i][j];
+              // cout << i << " " << j << " " << tmp << endl;
+              error[i+1][j+1] += tmp * tmp;
+            }
+        }
+    }
 
-  return error;
 }
+
+
+
 

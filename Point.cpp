@@ -53,7 +53,7 @@ void Point::setXY(double x,double y)
  */
 double Point::getX()
 {
-	return x;
+	return this->x;
 }
 
 /**
@@ -63,7 +63,7 @@ double Point::getX()
  */
 double Point::getY()
 {
-	return y;
+	return this->y;
 }
 
 /**

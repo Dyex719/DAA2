@@ -24,7 +24,7 @@ class Util
     vector<Point> getInput(string input_path);
     vector<Point> sortByX(vector<Point> points);
     void printAllPoints(vector<Point> points);
-    double leastSquareError(vector<Point> points,int i,int j);
+    void leastSquareError(vector<Point> points,vector<double> sum_xx,vector<double> sum_xy,vector<double> sum_y,vector<double> sum_x,vector<vector<double>> &error);
 
 
 };

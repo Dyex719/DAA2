@@ -21,15 +21,23 @@ void Algo::segmentedLeastSquares(vector<Point> points)
     points = u.sortByX(points);
     // u.printAllPoints(points);
     int size = points.size();
-    double error[size][size] = {0};
+    vector<vector<double>> error(double(size+1),vector<double> (double(size+1), 0.0));
 
-    for(int i = 0;i<size;i++ )
+    vector<double> sum_xx(size,0.0);
+    vector<double> sum_xy(size,0.0);
+    vector<double> sum_x(size,0.0);
+    vector<double> sum_y(size,0.0);
+
+    for(int i =0;i<points.size();i++)
     {
-        for(int j =i+1;j<size;j++)
-        {
-            error[i][j] = u.leastSquareError(points,i,j);
-        }
+        sum_xx[i] = sum_xx[i-1] + points[i].getX()*points[i].getX();
+        sum_xy[i] = sum_xy[i-1] + points[i].getX()*points[i].getY();
+        sum_x[i] = sum_x[i-1] + points[i].getX();
+        sum_y[i] = sum_y[i-1] + points[i].getY();
     }
+
+    u.leastSquareError(points,sum_xx,sum_xy,sum_y,sum_x,error);
+
 
     for(int i = 0;i<size;i++ )
     {
@@ -39,6 +47,12 @@ void Algo::segmentedLeastSquares(vector<Point> points)
         }
         cout << endl;
     }
+
+    // double opt[100];
+    // opt[0] = 0;
+
+        
+
 
 
 

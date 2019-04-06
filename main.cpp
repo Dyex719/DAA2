@@ -19,7 +19,7 @@ Util f;
 
 int main(void)
 {
-  string input_path = "./inputs/1.txt";
+  string input_path = "./inputs/2.txt";
   vector<Point> points = f.getInput(input_path);
   auto start = high_resolution_clock::now(); 
   a.segmentedLeastSquares(points);
