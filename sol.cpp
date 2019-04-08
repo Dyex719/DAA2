@@ -91,14 +91,14 @@ int main()	{
 		}
 	}
 
-    for(int i = 0;i<N;i++ )
-    {
-        for(int j =0;j<N;j++)
-        {
-            cout << E[i][j] << " ";
-        }
-        cout << endl;
-    }
+    // for(int i = 0;i<N;i++ )
+    // {
+    //     for(int j =0;j<N;j++)
+    //     {
+    //         cout << E[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
 
 	
 	// find the cost of the optimal solution
@@ -117,15 +117,30 @@ int main()	{
 	
 	printf("\nCost of the optimal solution : %lf\n", OPT[N]);
 	
+	    for(int i =0;i<=N;i++) cout << opt_segment[i];
+
 	// find the optimal solution
 	stack <int> segments;
 	for (i = N, j = opt_segment[N]; i > 0; i = j-1, j = opt_segment[i])	{
+		
+		cout << endl << i << j << endl;
 		segments.push(i);
 		segments.push(j);
 	}
+
+    for(int i = 1;i<=N;i++ )
+    {
+        for(int j =1;j<=N;j++)
+        {
+            cout << slope[i][j] << " ";
+        }
+        cout << endl;
+    }
+
 	
 	printf("\nAn optimal solution :\n");
 	while (!segments.empty())	{
+
 		i = segments.top(); segments.pop();
 		j = segments.top(); segments.pop();
 		printf("Segment (y = %lf * x + %lf) from points %d to %d with square error %lf.\n", 

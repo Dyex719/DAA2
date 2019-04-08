@@ -20,11 +20,12 @@ using namespace std;
 class Util
 {
   public:
-    double findEuclideanDistance(Point a,Point b);
     vector<Point> getInput(string input_path);
     vector<Point> sortByX(vector<Point> points);
     void printAllPoints(vector<Point> points);
-    void leastSquareError(vector<Point> points,vector<double> sum_xx,vector<double> sum_xy,vector<double> sum_y,vector<double> sum_x,vector<vector<double>> &error);
+    void leastSquareError(vector<Point> points,vector<double> sum_xx,vector<double> sum_xy,vector<double> sum_y,vector<double> sum_x,vector<vector<double>> &error,vector<vector<double>> &a,vector<vector<double>> &b);
+    void printMatrix(vector<vector<double>> &matrix,int size);
+    
 
 
 };

@@ -17,19 +17,6 @@ using namespace std;
 Point p0;
 
 /**
- * @brief Find the Euclidean distace between two points
- * 
- * @param a Point
- * @param b Point
- * @return double 
- */
-double Util::findEuclideanDistance(Point a,Point b)
-{
-  double distance = sqrt(pow(a.getY()-b.getY(),2)+pow(a.getX()-b.getX(),2));
-  return distance;
-}
-
-/**
  * @brief Helper function that prints out the values of all the points in a vector of Points
  * 
  * @param points 
@@ -72,11 +59,9 @@ vector<Point> Util::sortByX(vector<Point> points)
     return points;
 }
 
-void Util::leastSquareError(vector<Point> points,vector<double> sum_xx,vector<double> sum_xy,vector<double> sum_y,vector<double> sum_x,vector<vector<double>> &error)
+void Util::leastSquareError(vector<Point> points,vector<double> sum_xx,vector<double> sum_xy,vector<double> sum_y,vector<double> sum_x,vector<vector<double>> &error,vector<vector<double>> &a,vector<vector<double>> &b)
 {
     int size = points.size();
-    double a[size+1][size+1];
-    double b[size+1][size+1];
 
     for(int j = 0;j<size;j++ )
     {
@@ -110,6 +95,21 @@ void Util::leastSquareError(vector<Point> points,vector<double> sum_xx,vector<do
     }
 
 }
+
+void Util::printMatrix(vector<vector<double>> &matrix,int size)
+{
+  for(int i = 0;i<size;i++ )
+  {
+    for(int j =0;j<size;j++)
+    {
+        cout << matrix[i][j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+}
+
+
 
 
 
