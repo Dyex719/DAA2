@@ -51,6 +51,7 @@ int main()	{
 	printf("Enter %d points :\n", N);
 	for (i = 1; i <= N; i++)
 		scanf("%d %d", &points[i].x, &points[i].y);
+		
 	printf("Enter the cost of creating a new segment : ");
 	scanf("%lf", &C);
 	

@@ -25,7 +25,10 @@ class Util
     void printAllPoints(vector<Point> points);
     void leastSquareError(vector<Point> points,vector<double> sum_xx,vector<double> sum_xy,vector<double> sum_y,vector<double> sum_x,vector<vector<double>> &error,vector<vector<double>> &a,vector<vector<double>> &b);
     void printMatrix(vector<vector<double>> &matrix,int size);
-    
+    void precalculation(vector<Point> points,vector<double> &sum_xx,vector<double> &sum_xy,vector<double> &sum_y,vector<double> &sum_x);
+    void backtrack(int c,int size,vector<vector<double>> &error,vector<double> &res,vector<double> &segments);
+    void printToFile(vector<Point> points, vector<double> &segments, vector<vector<double>> &a,vector<vector<double>> &b);
+
 
 
 };
