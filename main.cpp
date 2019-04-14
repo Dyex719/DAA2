@@ -5,7 +5,7 @@
  * @version 0.1
  * @date 2019-03-31
  * 
- * @copyright Copyright (c) 2019
+ * @copyright Copyright (cost) 2019
  * 
  */
 #include "Point.h"

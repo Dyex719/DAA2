@@ -1,11 +1,11 @@
 /**
  * @file Util.cpp
  * @author your name (you@domain.com)
- * @brief Util Class which contains all the helper functions used in the convex hull algorithms.
+ * @brief Util Class which contains the implementation for the segmented least squares algorithm
  * @version 0.1
  * @date 2019-03-31
  * 
- * @copyright Copyright (c) 2019
+ * @copyright Copyright (cost) 2019
  * 
  */
 #include "Algo.h"
@@ -16,6 +16,11 @@
 using namespace std;
 Util u;
 
+/**
+ * @brief Implementation of the segmented least squares algorithm
+ * 
+ * @param points 
+ */
 void Algo::segmentedLeastSquares(vector<Point> points)
 {
     points = u.sortByX(points);
@@ -29,22 +34,17 @@ void Algo::segmentedLeastSquares(vector<Point> points)
     vector<double> sum_x(size,0.0);
     vector<double> sum_y(size,0.0);
     vector<double> res(size+1,0.0);
-    double c = 0;
-    // printf("Enter the additional cost of creating a new segment : ");
-	// scanf("%lf", &c);
+    double cost = 0.0;
+    printf("Enter the additional cost of creating a new segment : ");
+	scanf("%lf", &cost);
     vector<double> segments(size+1,0.0);
 
     u.precalculation(points,sum_xx,sum_xy,sum_y,sum_x);
     u.leastSquareError(points,sum_xx,sum_xy,sum_y,sum_x,error,a,b);
-    u.backtrack(c,size,error,res,segments);
+    u.backtrack(cost,size,error,res,segments);
     u.printToFile(points,segments,a,b);
 
 
-
-
-
-
-    
 
     
 }

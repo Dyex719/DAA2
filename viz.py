@@ -1,3 +1,9 @@
+"""@package Visualisation
+Script for Visualising the segmented lines.
+
+Takes as input the co-ordinates of Points. This input will be from a file.
+Stores the images and the GIF which helps to visualise the segmented lines.
+"""
 import matplotlib.pyplot as plt
 import imageio
 import os
@@ -35,11 +41,24 @@ plt.scatter(xs, ys)
 save_path = save_folder + '1.png'
 plt.savefig(save_path)
 
+quad = list(reversed(quad))
+
+k=2
 for j in range(len(quad)):
+    if(j>0):
+        s12 =(quad[j-1]["endx"], quad[j]["startx"])
+        t12 =(quad[j-1]["endy"], quad[j]["starty"])
+        plt.plot(s12,t12, marker = 'o')
+        plt.savefig(save_folder + str(k) + ".png")
+        k+=1
     x12 =(quad[j]["startx"], quad[j]["endx"])
     y12 =(quad[j]["starty"], quad[j]["endy"])
     plt.plot(x12,y12, marker = 'o')
-    plt.savefig(save_folder + str(j+2) + ".png")
+    plt.savefig(save_folder + str(k) + ".png")
+    k+=1
+
+
+
 
 images = []
 filenames = []
@@ -48,6 +67,8 @@ for file in os.listdir(path):
     filenames.append(os.path.join(path,file))
 for filename in sorted(filenames):
     images.append(imageio.imread(filename))
+
+print(sorted(filenames))
 imageio.mimsave(save_folder + 'res1.gif', images, duration=0.5)
 
 

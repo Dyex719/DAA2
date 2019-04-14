@@ -5,13 +5,13 @@
  * @version 0.1
  * @date 2019-03-31
  * 
- * @copyright Copyright (c) 2019
+ * @copyright Copyright (cost) 2019
  * 
  */
 #include "Util.h"
 #include <math.h>
-#include<algorithm>
-#include<vector>
+#include <algorithm>
+#include <vector>
 #define INF numeric_limits<double>::infinity()
 using namespace std;
 
@@ -47,17 +47,44 @@ vector<Point> Util::getInput(string input_path)
   }
   return points;
 }
-bool leftl(Point p1, Point p2)
+
+/**
+ * @brief Comparator function that compares points by their X co-ordinate
+ * 
+ * @param p1 
+ * @param p2 
+ * @return true 
+ * @return false 
+ */
+bool comparator(Point p1, Point p2)
 {
     return (p1.getX() < p2.getX() || (p1.getX() == p2.getX() && p1.getY() < p2.getY()));
 }
 
+/**
+ * @brief Function that sorts points by the increasing X co-ordinate
+ * 
+ * @param points 
+ * @return vector<Point> 
+ */
 vector<Point> Util::sortByX(vector<Point> points)
 {
-    sort(points.begin(), points.end(), leftl);
+    sort(points.begin(), points.end(), comparator);
     return points;
 }
 
+/**
+ * @brief Function that calculates the error matrix used to segment the lines
+ * 
+ * @param points 
+ * @param sum_xx 
+ * @param sum_xy 
+ * @param sum_y 
+ * @param sum_x 
+ * @param error 
+ * @param a 
+ * @param b 
+ */
 void Util::leastSquareError(vector<Point> points,vector<double> sum_xx,vector<double> sum_xy,vector<double> sum_y,vector<double> sum_x,vector<vector<double>> &error,vector<vector<double>> &a,vector<vector<double>> &b)
 {
     int size = points.size();
@@ -95,6 +122,12 @@ void Util::leastSquareError(vector<Point> points,vector<double> sum_xx,vector<do
 
 }
 
+/**
+ * @brief debugging function to print the values inside a matrix
+ * 
+ * @param matrix 
+ * @param size 
+ */
 void Util::printMatrix(vector<vector<double>> &matrix,int size)
 {
   for(int i = 0;i<size;i++ )
@@ -108,6 +141,15 @@ void Util::printMatrix(vector<vector<double>> &matrix,int size)
   cout << endl;
 }
 
+/**
+ * @brief Helper function to find the values used in error calculation beforehand to speed up calculation
+ * 
+ * @param points 
+ * @param sum_xx 
+ * @param sum_xy 
+ * @param sum_y 
+ * @param sum_x 
+ */
 void Util::precalculation(vector<Point> points,vector<double> &sum_xx,vector<double> &sum_xy,vector<double> &sum_y,vector<double> &sum_x)
 {
   for(int i =0;i<points.size();i++)
@@ -119,7 +161,16 @@ void Util::precalculation(vector<Point> points,vector<double> &sum_xx,vector<dou
   }
 }
 
-void Util::backtrack(int c,int size,vector<vector<double>> &error,vector<double> &res,vector<double> &segments)
+/**
+ * @brief Function that finds the line segments by backtracking through the error function
+ * 
+ * @param cost 
+ * @param size 
+ * @param error 
+ * @param res 
+ * @param segments 
+ */
+void Util::backtrack(int cost,int size,vector<vector<double>> &error,vector<double> &res,vector<double> &segments)
 {
       for(int j =1;j<=size;j++)
     {
@@ -127,9 +178,9 @@ void Util::backtrack(int c,int size,vector<vector<double>> &error,vector<double>
         int index;
         for(int i=1;i<=j;i++)
         {
-            if(error[i][j] + c + res[i-1]<temp)
+            if(error[i][j] + cost + res[i-1]<temp)
             {
-                temp = error[i][j] + c + res[i-1];
+                temp = error[i][j] + cost + res[i-1];
                 index = i;
             }
         }
@@ -138,6 +189,14 @@ void Util::backtrack(int c,int size,vector<vector<double>> &error,vector<double>
     }
 }
 
+/**
+ * @brief Function that prints the line segments to a file from where it can be used for visualisation
+ * 
+ * @param points 
+ * @param segments 
+ * @param a 
+ * @param b 
+ */
 void Util::printToFile(vector<Point> points, vector<double> &segments, vector<vector<double>> &a,vector<vector<double>> &b)
 {
 
@@ -149,10 +208,12 @@ void Util::printToFile(vector<Point> points, vector<double> &segments, vector<ve
     myfile.open("./outputs/2.txt");
     while(i>0)
     {
-        myfile << points[j-1].getX() << " " << points[j-1].getX()*a[j-1][i-1]+b[j-1][i-1] << " " << points[i-1].getX() << " " << points[i-1].getX()*a[j-1][i-1]+b[j-1][i-1]<< endl;
+        myfile << points[j-1].getX() << " " << points[j-1].getY() << " " << points[i-1].getX() << " " << points[i-1].getY() << endl;
         // cout << i << " " << j << " ";
         // cout << a[j-1][i-1] << " " << b[j-1][i-1] << endl;
         cout << points[j-1].getX() << " " << points[j-1].getX()*a[j-1][i-1]+b[j-1][i-1] << " " << points[i-1].getX() << " " << points[i-1].getX()*a[j-1][i-1]+b[j-1][i-1]<< endl;
+        cout << points[j-1].getY() << " " << points[j-1].getY()*a[j-1][i-1]+b[j-1][i-1] << " " << points[i-1].getY() << " " << points[i-1].getY()*a[j-1][i-1]+b[j-1][i-1]<< endl;
+
 
         i = j-1;
         j = segments[i];

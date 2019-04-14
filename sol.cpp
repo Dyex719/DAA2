@@ -44,7 +44,7 @@ int opt_segment[MAXN + 1];
 int main()	{
 	int N, i, j, k, interval;
 	long long x_sum, y_sum, xy_sum, xsqr_sum, num, denom;
-	double tmp, mn, C;
+	double tmp, mn, cost;
 	
 	printf("Enter the number of points : ");
 	scanf("%d", &N);
@@ -53,7 +53,7 @@ int main()	{
 		scanf("%d %d", &points[i].x, &points[i].y);
 		
 	printf("Enter the cost of creating a new segment : ");
-	scanf("%lf", &C);
+	scanf("%lf", &cost);
 	
 	// sort the points in non-decreasing order of x coordinate
 	sort (points + 1, points + N + 1);
@@ -112,7 +112,7 @@ int main()	{
 				k = i;
 			}
 		}
-		OPT[j] = mn + C;
+		OPT[j] = mn + cost;
 		opt_segment[j] = k;
 	}
 	
