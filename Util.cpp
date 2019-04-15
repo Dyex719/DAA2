@@ -178,7 +178,7 @@ void Util::backtrack(int cost,int size,vector<vector<double>> &error,vector<doub
         int index;
         for(int i=1;i<=j;i++)
         {
-            if(error[i][j] + cost + res[i-1]<temp)
+            if(temp > error[i][j] + cost + res[i-1])
             {
                 temp = error[i][j] + cost + res[i-1];
                 index = i;

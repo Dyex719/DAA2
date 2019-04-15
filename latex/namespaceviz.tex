@@ -1,0 +1,69 @@
+\hypertarget{namespaceviz}{}\section{viz Namespace Reference}
+\label{namespaceviz}\index{viz@{viz}}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespaceviz_ad81e048a14308ac78529a2ffab5f840d}\label{namespaceviz_ad81e048a14308ac78529a2ffab5f840d}} 
+string {\bfseries points\+\_\+file} = \char`\"{}./inputs/2.txt\char`\"{}
+\item 
+\mbox{\Hypertarget{namespaceviz_a67692ad97c31ca8a38e7782c14c35a8a}\label{namespaceviz_a67692ad97c31ca8a38e7782c14c35a8a}} 
+string {\bfseries results\+\_\+file} = \char`\"{}./outputs/2.txt\char`\"{}
+\item 
+\mbox{\Hypertarget{namespaceviz_ae860dcbc3ac52db67b40fb426d00e796}\label{namespaceviz_ae860dcbc3ac52db67b40fb426d00e796}} 
+string {\bfseries save\+\_\+folder} = \textquotesingle{}./gifs/res3b/\textquotesingle{}
+\item 
+\mbox{\Hypertarget{namespaceviz_a4d8ae4a594628aab357f474814f27936}\label{namespaceviz_a4d8ae4a594628aab357f474814f27936}} 
+{\bfseries orig} = o.\+readlines()
+\item 
+\mbox{\Hypertarget{namespaceviz_a6037ad5d1818b795e635575506b7ee25}\label{namespaceviz_a6037ad5d1818b795e635575506b7ee25}} 
+{\bfseries res} = f.\+readlines()
+\item 
+\mbox{\Hypertarget{namespaceviz_ad7494f86d24e37c9e9cbfc22550e0da6}\label{namespaceviz_ad7494f86d24e37c9e9cbfc22550e0da6}} 
+list {\bfseries all\+\_\+points} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\Hypertarget{namespaceviz_ac05ef98c53769f73a58977ecd93db4ea}\label{namespaceviz_ac05ef98c53769f73a58977ecd93db4ea}} 
+{\bfseries coord} = point.\+strip().split(\char`\"{},\char`\"{})
+\item 
+\mbox{\Hypertarget{namespaceviz_a0b7f13b9f924d8f3e1cca1c544722c8a}\label{namespaceviz_a0b7f13b9f924d8f3e1cca1c544722c8a}} 
+list {\bfseries quad} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\Hypertarget{namespaceviz_a703405b9ba5a09329dc0936c2bc4932c}\label{namespaceviz_a703405b9ba5a09329dc0936c2bc4932c}} 
+list {\bfseries xs} = \mbox{[}i\mbox{[}\char`\"{}x\char`\"{}\mbox{]} for i in all\+\_\+points\mbox{]}
+\item 
+\mbox{\Hypertarget{namespaceviz_aba10e6cb35ce6bb5bcda964ee5424709}\label{namespaceviz_aba10e6cb35ce6bb5bcda964ee5424709}} 
+list {\bfseries ys} = \mbox{[}i\mbox{[}\char`\"{}y\char`\"{}\mbox{]} for i in all\+\_\+points\mbox{]}
+\item 
+\mbox{\Hypertarget{namespaceviz_ad500652a6dbdadf872bcc16c06a7f1f2}\label{namespaceviz_ad500652a6dbdadf872bcc16c06a7f1f2}} 
+string {\bfseries save\+\_\+path} = save\+\_\+folder + \textquotesingle{}1.png\textquotesingle{}
+\item 
+\mbox{\Hypertarget{namespaceviz_a5154b62dc4f27dd696be2eb29e190510}\label{namespaceviz_a5154b62dc4f27dd696be2eb29e190510}} 
+tuple {\bfseries x12} = (quad\mbox{[}j\mbox{]}\mbox{[}\char`\"{}startx\char`\"{}\mbox{]}, quad\mbox{[}j\mbox{]}\mbox{[}\char`\"{}endx\char`\"{}\mbox{]})
+\item 
+\mbox{\Hypertarget{namespaceviz_a90b8e0262d8da637b8c73c32436c463f}\label{namespaceviz_a90b8e0262d8da637b8c73c32436c463f}} 
+tuple {\bfseries y12} = (quad\mbox{[}j\mbox{]}\mbox{[}\char`\"{}starty\char`\"{}\mbox{]}, quad\mbox{[}j\mbox{]}\mbox{[}\char`\"{}endy\char`\"{}\mbox{]})
+\item 
+\mbox{\Hypertarget{namespaceviz_a2775352cd2f8e39030d46cccdd6c5bec}\label{namespaceviz_a2775352cd2f8e39030d46cccdd6c5bec}} 
+{\bfseries marker}
+\item 
+\mbox{\Hypertarget{namespaceviz_ae10009cd81d9cc163a3c8be90b7fba9e}\label{namespaceviz_ae10009cd81d9cc163a3c8be90b7fba9e}} 
+list {\bfseries images} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\Hypertarget{namespaceviz_a6e3b1ef282af414dc603e69de148d85d}\label{namespaceviz_a6e3b1ef282af414dc603e69de148d85d}} 
+list {\bfseries filenames} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\Hypertarget{namespaceviz_a71f94f80afeaf328e723219337010411}\label{namespaceviz_a71f94f80afeaf328e723219337010411}} 
+string {\bfseries path} = save\+\_\+folder
+\item 
+\mbox{\Hypertarget{namespaceviz_afb8dadc1612617718e8c0a507596b2d6}\label{namespaceviz_afb8dadc1612617718e8c0a507596b2d6}} 
+{\bfseries duration}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}@package Visualisation
+Script for Visualising the segmented lines.
+
+Takes as input the co-ordinates of Points. This input will be from a file.
+Stores the images and the GIF which helps to visualise the segmented lines.
+\end{DoxyVerb}
+ 

@@ -1,0 +1,194 @@
+\hypertarget{classUtil}{}\section{Util Class Reference}
+\label{classUtil}\index{Util@{Util}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \hyperlink{classPoint}{Point} $>$ \hyperlink{classUtil_a9d498a3fdcb57063895cd379f125e36c}{get\+Input} (string input\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Reads input of co-\/ordinates from a file and stores them in a vector. \end{DoxyCompactList}\item 
+vector$<$ \hyperlink{classPoint}{Point} $>$ \hyperlink{classUtil_a088daf5e054cfe08139bdccd00f58cb5}{sort\+ByX} (vector$<$ \hyperlink{classPoint}{Point} $>$ points)
+\begin{DoxyCompactList}\small\item\em Function that sorts points by the increasing X co-\/ordinate. \end{DoxyCompactList}\item 
+void \hyperlink{classUtil_a178628de18adc2807d3a331a060e62a0}{print\+All\+Points} (vector$<$ \hyperlink{classPoint}{Point} $>$ points)
+\begin{DoxyCompactList}\small\item\em Helper function that prints out the values of all the points in a vector of Points. \end{DoxyCompactList}\item 
+void \hyperlink{classUtil_a770bc482b540591e2aeb53cbd714dc7f}{least\+Square\+Error} (vector$<$ \hyperlink{classPoint}{Point} $>$ points, vector$<$ double $>$ sum\+\_\+xx, vector$<$ double $>$ sum\+\_\+xy, vector$<$ double $>$ sum\+\_\+y, vector$<$ double $>$ sum\+\_\+x, vector$<$ vector$<$ double $>$$>$ \&error, vector$<$ vector$<$ double $>$$>$ \&a, vector$<$ vector$<$ double $>$$>$ \&b)
+\begin{DoxyCompactList}\small\item\em Function that calculates the error matrix used to segment the lines. \end{DoxyCompactList}\item 
+void \hyperlink{classUtil_a28d918079aea7f09487b7636f8fd4c1e}{print\+Matrix} (vector$<$ vector$<$ double $>$$>$ \&matrix, int size)
+\begin{DoxyCompactList}\small\item\em debugging function to print the values inside a matrix \end{DoxyCompactList}\item 
+void \hyperlink{classUtil_a5ae97aa4dd9d925c898463e6a6b299aa}{precalculation} (vector$<$ \hyperlink{classPoint}{Point} $>$ points, vector$<$ double $>$ \&sum\+\_\+xx, vector$<$ double $>$ \&sum\+\_\+xy, vector$<$ double $>$ \&sum\+\_\+y, vector$<$ double $>$ \&sum\+\_\+x)
+\begin{DoxyCompactList}\small\item\em Helper function to find the values used in error calculation beforehand to speed up calculation. \end{DoxyCompactList}\item 
+void \hyperlink{classUtil_a1a617982a036cdf75a0751a900be4963}{backtrack} (int cost, int size, vector$<$ vector$<$ double $>$$>$ \&error, vector$<$ double $>$ \&res, vector$<$ double $>$ \&segments)
+\begin{DoxyCompactList}\small\item\em Function that finds the line segments by backtracking through the error function. \end{DoxyCompactList}\item 
+void \hyperlink{classUtil_a301898b592f7bd987cb56a57cbbe2e92}{print\+To\+File} (vector$<$ \hyperlink{classPoint}{Point} $>$ points, vector$<$ double $>$ \&segments, vector$<$ vector$<$ double $>$$>$ \&a, vector$<$ vector$<$ double $>$$>$ \&b)
+\begin{DoxyCompactList}\small\item\em Function that prints the line segments to a file from where it can be used for visualisation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classUtil_a1a617982a036cdf75a0751a900be4963}\label{classUtil_a1a617982a036cdf75a0751a900be4963}} 
+\index{Util@{Util}!backtrack@{backtrack}}
+\index{backtrack@{backtrack}!Util@{Util}}
+\subsubsection{\texorpdfstring{backtrack()}{backtrack()}}
+{\footnotesize\ttfamily void Util\+::backtrack (\begin{DoxyParamCaption}\item[{int}]{cost,  }\item[{int}]{size,  }\item[{vector$<$ vector$<$ double $>$$>$ \&}]{error,  }\item[{vector$<$ double $>$ \&}]{res,  }\item[{vector$<$ double $>$ \&}]{segments }\end{DoxyParamCaption})}
+
+
+
+Function that finds the line segments by backtracking through the error function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cost} & \\
+\hline
+{\em size} & \\
+\hline
+{\em error} & \\
+\hline
+{\em res} & \\
+\hline
+{\em segments} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUtil_a9d498a3fdcb57063895cd379f125e36c}\label{classUtil_a9d498a3fdcb57063895cd379f125e36c}} 
+\index{Util@{Util}!get\+Input@{get\+Input}}
+\index{get\+Input@{get\+Input}!Util@{Util}}
+\subsubsection{\texorpdfstring{get\+Input()}{getInput()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{classPoint}{Point} $>$ Util\+::get\+Input (\begin{DoxyParamCaption}\item[{string}]{input\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Reads input of co-\/ordinates from a file and stores them in a vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+path} & Location of the input file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$\+Point$>$ vector in which the input is stored 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUtil_a770bc482b540591e2aeb53cbd714dc7f}\label{classUtil_a770bc482b540591e2aeb53cbd714dc7f}} 
+\index{Util@{Util}!least\+Square\+Error@{least\+Square\+Error}}
+\index{least\+Square\+Error@{least\+Square\+Error}!Util@{Util}}
+\subsubsection{\texorpdfstring{least\+Square\+Error()}{leastSquareError()}}
+{\footnotesize\ttfamily void Util\+::least\+Square\+Error (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points,  }\item[{vector$<$ double $>$}]{sum\+\_\+xx,  }\item[{vector$<$ double $>$}]{sum\+\_\+xy,  }\item[{vector$<$ double $>$}]{sum\+\_\+y,  }\item[{vector$<$ double $>$}]{sum\+\_\+x,  }\item[{vector$<$ vector$<$ double $>$$>$ \&}]{error,  }\item[{vector$<$ vector$<$ double $>$$>$ \&}]{a,  }\item[{vector$<$ vector$<$ double $>$$>$ \&}]{b }\end{DoxyParamCaption})}
+
+
+
+Function that calculates the error matrix used to segment the lines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & \\
+\hline
+{\em sum\+\_\+xx} & \\
+\hline
+{\em sum\+\_\+xy} & \\
+\hline
+{\em sum\+\_\+y} & \\
+\hline
+{\em sum\+\_\+x} & \\
+\hline
+{\em error} & \\
+\hline
+{\em a} & \\
+\hline
+{\em b} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUtil_a5ae97aa4dd9d925c898463e6a6b299aa}\label{classUtil_a5ae97aa4dd9d925c898463e6a6b299aa}} 
+\index{Util@{Util}!precalculation@{precalculation}}
+\index{precalculation@{precalculation}!Util@{Util}}
+\subsubsection{\texorpdfstring{precalculation()}{precalculation()}}
+{\footnotesize\ttfamily void Util\+::precalculation (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points,  }\item[{vector$<$ double $>$ \&}]{sum\+\_\+xx,  }\item[{vector$<$ double $>$ \&}]{sum\+\_\+xy,  }\item[{vector$<$ double $>$ \&}]{sum\+\_\+y,  }\item[{vector$<$ double $>$ \&}]{sum\+\_\+x }\end{DoxyParamCaption})}
+
+
+
+Helper function to find the values used in error calculation beforehand to speed up calculation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & \\
+\hline
+{\em sum\+\_\+xx} & \\
+\hline
+{\em sum\+\_\+xy} & \\
+\hline
+{\em sum\+\_\+y} & \\
+\hline
+{\em sum\+\_\+x} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUtil_a178628de18adc2807d3a331a060e62a0}\label{classUtil_a178628de18adc2807d3a331a060e62a0}} 
+\index{Util@{Util}!print\+All\+Points@{print\+All\+Points}}
+\index{print\+All\+Points@{print\+All\+Points}!Util@{Util}}
+\subsubsection{\texorpdfstring{print\+All\+Points()}{printAllPoints()}}
+{\footnotesize\ttfamily void Util\+::print\+All\+Points (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points }\end{DoxyParamCaption})}
+
+
+
+Helper function that prints out the values of all the points in a vector of Points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUtil_a28d918079aea7f09487b7636f8fd4c1e}\label{classUtil_a28d918079aea7f09487b7636f8fd4c1e}} 
+\index{Util@{Util}!print\+Matrix@{print\+Matrix}}
+\index{print\+Matrix@{print\+Matrix}!Util@{Util}}
+\subsubsection{\texorpdfstring{print\+Matrix()}{printMatrix()}}
+{\footnotesize\ttfamily void Util\+::print\+Matrix (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ double $>$$>$ \&}]{matrix,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+debugging function to print the values inside a matrix 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrix} & \\
+\hline
+{\em size} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUtil_a301898b592f7bd987cb56a57cbbe2e92}\label{classUtil_a301898b592f7bd987cb56a57cbbe2e92}} 
+\index{Util@{Util}!print\+To\+File@{print\+To\+File}}
+\index{print\+To\+File@{print\+To\+File}!Util@{Util}}
+\subsubsection{\texorpdfstring{print\+To\+File()}{printToFile()}}
+{\footnotesize\ttfamily void Util\+::print\+To\+File (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points,  }\item[{vector$<$ double $>$ \&}]{segments,  }\item[{vector$<$ vector$<$ double $>$$>$ \&}]{a,  }\item[{vector$<$ vector$<$ double $>$$>$ \&}]{b }\end{DoxyParamCaption})}
+
+
+
+Function that prints the line segments to a file from where it can be used for visualisation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & \\
+\hline
+{\em segments} & \\
+\hline
+{\em a} & \\
+\hline
+{\em b} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUtil_a088daf5e054cfe08139bdccd00f58cb5}\label{classUtil_a088daf5e054cfe08139bdccd00f58cb5}} 
+\index{Util@{Util}!sort\+ByX@{sort\+ByX}}
+\index{sort\+ByX@{sort\+ByX}!Util@{Util}}
+\subsubsection{\texorpdfstring{sort\+By\+X()}{sortByX()}}
+{\footnotesize\ttfamily vector$<$ \hyperlink{classPoint}{Point} $>$ Util\+::sort\+ByX (\begin{DoxyParamCaption}\item[{vector$<$ \hyperlink{classPoint}{Point} $>$}]{points }\end{DoxyParamCaption})}
+
+
+
+Function that sorts points by the increasing X co-\/ordinate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em points} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$\+Point$>$ 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Util_8h}{Util.\+h}\item 
+\hyperlink{Util_8cpp}{Util.\+cpp}\end{DoxyCompactItemize}
