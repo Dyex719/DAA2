@@ -10,7 +10,7 @@ import os
 
 points_file = "./inputs/2.txt"
 results_file = "./outputs/2.txt"
-save_folder = './gifs/res3b/'
+save_folder = './gifs/res5c/'
 
 if not os.path.exists(save_folder):
     os.mkdir(save_folder)
@@ -24,12 +24,12 @@ with open(results_file) as f:
 all_points = []
 for point in orig:
     coord = point.strip().split(",")
-    all_points.append({"x":int(coord[0]),"y":int(coord[1])})
+    all_points.append({"x":float(coord[0]),"y":float(coord[1])})
 
 quad = []
 for line in res:
     res = line.strip().split()
-    quad.append({"startx":int(res[0]),"starty":int(res[1]),"endx":int(res[2]),"endy":int(res[3])})
+    quad.append({"startx":float(res[0]),"starty":float(res[1]),"endx":float(res[2]),"endy":float(res[3])})
 
 o.close()
 f.close()
@@ -43,25 +43,25 @@ plt.savefig(save_path)
 
 quad = list(reversed(quad))
 
-# k=2
-# for j in range(len(quad)):
-#     if(j>0):
-#         s12 =(quad[j-1]["endx"], quad[j]["startx"])
-#         t12 =(quad[j-1]["endy"], quad[j]["starty"])
-#         plt.plot(s12,t12, marker = 'o')
-#         plt.savefig(save_folder + str(k) + ".png")
-#         k+=1
-#     x12 =(quad[j]["startx"], quad[j]["endx"])
-#     y12 =(quad[j]["starty"], quad[j]["endy"])
-#     plt.plot(x12,y12, marker = 'o')
-#     plt.savefig(save_folder + str(k) + ".png")
-#     k+=1
-
+k=2
 for j in range(len(quad)):
+    if(j>0):
+        s12 =(quad[j-1]["endx"], quad[j]["startx"])
+        t12 =(quad[j-1]["endy"], quad[j]["starty"])
+        plt.plot(s12,t12, marker = 'o')
+        plt.savefig(save_folder + str(k) + ".png")
+        k+=1
     x12 =(quad[j]["startx"], quad[j]["endx"])
     y12 =(quad[j]["starty"], quad[j]["endy"])
     plt.plot(x12,y12, marker = 'o')
-    plt.savefig(save_folder + str(j+2) + ".png")
+    plt.savefig(save_folder + str(k) + ".png")
+    k+=1
+
+# for j in range(len(quad)):
+#     x12 =(quad[j]["startx"], quad[j]["endx"])
+#     y12 =(quad[j]["starty"], quad[j]["endy"])
+#     plt.plot(x12,y12, marker = 'o')
+#     plt.savefig(save_folder + str(j+2) + ".png")
 
 
 images = []

@@ -208,7 +208,7 @@ void Util::printToFile(vector<Point> points, vector<double> &segments, vector<ve
     myfile.open("./outputs/2.txt");
     while(i>0)
     {
-        myfile << points[j-1].getX() << " " << points[j-1].getY() << " " << points[i-1].getX() << " " << points[i-1].getY() << endl;
+        myfile << points[j-1].getX() << " " << points[j-1].getX()*a[j-1][i-1]+b[j-1][i-1] << " " << points[i-1].getX() << " " << points[i-1].getX()*a[j-1][i-1]+b[j-1][i-1] << endl;
         // cout << i << " " << j << " ";
         // cout << a[j-1][i-1] << " " << b[j-1][i-1] << endl;
         cout << points[j-1].getX() << " " << points[j-1].getX()*a[j-1][i-1]+b[j-1][i-1] << " " << points[i-1].getX() << " " << points[i-1].getX()*a[j-1][i-1]+b[j-1][i-1]<< endl;
